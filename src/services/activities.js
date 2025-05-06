@@ -8,5 +8,16 @@ export const getAllActivites = async () => {
     return response
   } catch (error) {
     console.log(error)
+    throw error
+  }
+}
+
+export const getSingleActivity = async (activityId) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/activities/${activityId}`)
+    return response
+  } catch (error) {
+    console.log(error)
+    throw error
   }
 }
