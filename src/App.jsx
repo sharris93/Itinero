@@ -1,6 +1,19 @@
+import { Routes, Route } from 'react-router'
+
+// Global components
+import Navbar from './components/Navbar/Navbar'
+
+// Page component
+import ActivityIndex from './components/ActivityIndex/ActivityIndex'
+
 function App() {
   return (
-    <h1>Hello World</h1>
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/activities" element={<ActivityIndex />} />
+      </Routes>
+    </>
   )
 }
 
