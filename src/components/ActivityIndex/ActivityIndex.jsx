@@ -1,7 +1,9 @@
 import './ActivityIndex.css'
-import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router'
+
+// Service function
+import { getAllActivites } from '../../services/activities'
 
 export default function ActivityIndex(){
   // * State
@@ -14,7 +16,8 @@ export default function ActivityIndex(){
     async function getActivities(){
       try {
         // 1. Consume the API, retrieving a response
-        const { data } = await axios.get('https://api-ga.netlify.app/api/activities')
+        // We use a reusable service function here to standardise the request
+        const { data } = await getAllActivites()
         // 2. Set the body of that response (data) to state
         setActivities(data)
       } catch (error) {
