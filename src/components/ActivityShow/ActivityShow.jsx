@@ -1,5 +1,5 @@
 import './ActivityShow.css'
-import { useParams } from 'react-router'
+import { Link, useParams } from 'react-router'
 import { getSingleActivity } from '../../services/activities'
 import useFetch from '../../hooks/useFetch'
 
@@ -23,6 +23,7 @@ export default function ActivityShow(){
           : (
             <section className="single-activity">
               <h1>{activity.title}</h1>
+              <Link to={`/activities/${activityId}/edit`}>Edit</Link>
             </section>
           )
       }

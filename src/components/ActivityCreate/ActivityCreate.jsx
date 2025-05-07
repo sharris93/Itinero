@@ -73,7 +73,7 @@ export default function ActivityCreate(){
         </div>
 
         {/* Submit */}
-        <button type="submit">{ isLoading ? <img className='spinner-gif' src={spinnerGIF} /> : 'Create Activity' }</button>
+        <button type="submit">{ isLoading ? <img className='button-spinner' src={spinnerGIF} /> : 'Create Activity' }</button>
       </form>
     </section>
   )

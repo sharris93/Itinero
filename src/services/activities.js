@@ -30,3 +30,12 @@ export const createActivity = async (formData) => {
     throw error
   }
 }
+
+export const updateActivity = async (activityId, formData) => {
+  try {
+    return axios.put(`${BASE_URL}/activities/${activityId}`, formData)
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
