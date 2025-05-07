@@ -11,7 +11,7 @@ export default function ActivityIndex(){
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(true)
 
-  // * On component mount (on the first render of the page)
+  // * Effects
   useEffect(() => {
     async function getActivities(){
       try {
@@ -25,11 +25,6 @@ export default function ActivityIndex(){
     }
     getActivities()
   }, [])
-
-
-  // 1. If there is an error, display it
-  // 2. If there is no error, but loading is true, display loading icon
-  // 3. If there is no error, loading is false, display data
 
   return (
     <>
