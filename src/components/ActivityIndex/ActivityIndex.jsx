@@ -1,30 +1,13 @@
 import './ActivityIndex.css'
-import { useEffect, useState } from 'react'
 import { Link } from 'react-router'
+import useFetch from '../../hooks/useFetch'
 
 // Service function
 import { getAllActivites } from '../../services/activities'
 
 export default function ActivityIndex(){
   // * State
-  const [activities, setActivities] = useState([])
-  const [error, setError] = useState('')
-  const [loading, setLoading] = useState(true)
-
-  // * Effects
-  useEffect(() => {
-    async function getActivities(){
-      try {
-        const { data } = await getAllActivites()
-        setActivities(data)
-      } catch {
-        setError('Failed to fetch activity data. Please try again later.')
-      } finally {
-        setLoading(false)
-      }
-    }
-    getActivities()
-  }, [])
+  const { data: activities, isLoading, error } = useFetch(getAllActivites, [])
 
   return (
     <>
@@ -32,7 +15,7 @@ export default function ActivityIndex(){
       <section className="activity-list">
         {error 
           ? <p className='error-message'>{error}</p>
-          : loading
+          : isLoading
             ? <p>Loading...</p>
             : activities.length > 0
               ? activities.map(activity => (
