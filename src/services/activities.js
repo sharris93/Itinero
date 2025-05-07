@@ -39,3 +39,12 @@ export const updateActivity = async (activityId, formData) => {
     throw error
   }
 }
+
+export const deleteActivity = async (activityId) => {
+  try {
+    return axios.delete(`${BASE_URL}/activities/${activityId}`)
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}

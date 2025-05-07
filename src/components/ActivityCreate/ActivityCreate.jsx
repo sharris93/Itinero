@@ -2,8 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import './ActivityCreate.css'
 import { createActivity } from '../../services/activities'
-
-import spinnerGIF from '../../assets/spinner.gif'
+import Spinner from '../Spinner/Spinner'
 
 export default function ActivityCreate(){
   // * State
@@ -73,7 +72,7 @@ export default function ActivityCreate(){
         </div>
 
         {/* Submit */}
-        <button type="submit">{ isLoading ? <img className='button-spinner' src={spinnerGIF} /> : 'Create Activity' }</button>
+        <button type="submit">{ isLoading ? <Spinner /> : 'Create Activity' }</button>
       </form>
     </section>
   )

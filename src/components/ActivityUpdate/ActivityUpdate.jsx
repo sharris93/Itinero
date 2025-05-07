@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import { useParams, useNavigate } from "react-router"
-import spinnerGIF from '../../assets/spinner.gif'
 import { getSingleActivity, updateActivity } from "../../services/activities"
+import Spinner from "../Spinner/Spinner"
 
 export default function ActivityUpdate(){
   // * State
@@ -87,7 +87,7 @@ export default function ActivityUpdate(){
             {error.preload && <p className="error-message">{error.preload}</p>}
     
             {/* Submit */}
-            <button type="submit">{ isLoading ? <img className='button-spinner' src={spinnerGIF} /> : 'Update Activity' }</button>
+            <button type="submit">{ isLoading ? <Spinner /> : 'Update Activity' }</button>
           </form>
         </section>
   )

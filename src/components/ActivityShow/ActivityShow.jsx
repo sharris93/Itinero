@@ -3,6 +3,9 @@ import { Link, useParams } from 'react-router'
 import { getSingleActivity } from '../../services/activities'
 import useFetch from '../../hooks/useFetch'
 
+// Custom components
+import ActivityDelete from '../ActivityDelete/ActivityDelete'
+
 export default function ActivityShow(){
   // * Params
   const { activityId } = useParams()
@@ -24,6 +27,7 @@ export default function ActivityShow(){
             <section className="single-activity">
               <h1>{activity.title}</h1>
               <Link to={`/activities/${activityId}/edit`}>Edit</Link>
+              <ActivityDelete />
             </section>
           )
       }
