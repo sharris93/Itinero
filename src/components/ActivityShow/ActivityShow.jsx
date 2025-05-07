@@ -9,8 +9,9 @@ export default function ActivityShow(){
 
   // * State
   const { data: activity, isLoading, error } = useFetch(
-    () => getSingleActivity(activityId),
-    {}
+    getSingleActivity, // Service function
+    {}, // Initial data value
+    activityId
   )
 
   return (

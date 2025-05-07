@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export default function useFetch(serviceFunction, initialDataValue){
+export default function useFetch(serviceFunction, initialDataValue, arg){
   // * State
   const [data, setData] = useState(initialDataValue)
   const [isLoading, setIsLoading] = useState(true)
@@ -10,7 +10,7 @@ export default function useFetch(serviceFunction, initialDataValue){
   useEffect(() => {
     async function fetchData(){
       try {
-        const { data } = await serviceFunction()
+        const { data } = await serviceFunction(arg)
         setData(data)
       } catch {
         setError('Failed to fetch data. Please try again later.')
@@ -19,7 +19,7 @@ export default function useFetch(serviceFunction, initialDataValue){
       }
     }
     fetchData()
-  }, [serviceFunction])
+  }, [serviceFunction, arg])
 
 
   return { data, isLoading, error }
