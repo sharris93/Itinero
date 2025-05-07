@@ -8,3 +8,7 @@ header {
 .brand-logo {
   font-size: 2rem;
 }
+
+header nav a {
+  margin-left: .5rem;
+}
