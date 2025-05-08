@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router"
 import { useState } from 'react'
 import { login } from "../../services/auth"
 import Spinner from "../Spinner/Spinner"
+import { setToken } from "../../utils/auth"
 
 export default function Login(){
   // * State
@@ -25,7 +26,8 @@ export default function Login(){
     evt.preventDefault()
     setIsLoading(true)
     try {
-      await login(formData)
+      const { data } = await login(formData)
+      setToken(data.token)
       navigate('/activities')
     } catch (error) {
       setError(error.response.data)
