@@ -5,6 +5,7 @@ import useFetch from '../../hooks/useFetch'
 
 // Custom components
 import ActivityDelete from '../ActivityDelete/ActivityDelete'
+import Spinner from '../Spinner/Spinner'
 
 export default function ActivityShow(){
   // * Params
@@ -22,12 +23,17 @@ export default function ActivityShow(){
       {error
         ? <p className='error-message'>{error}</p>
         : isLoading
-          ? <p>Loading...</p>
+          ? <Spinner />
           : (
             <section className="single-activity">
               <h1>{activity.title}</h1>
-              <Link to={`/activities/${activityId}/edit`}>Edit</Link>
-              <ActivityDelete />
+              <p>📍 {activity.location}</p>
+              <p>{activity.description}</p>
+              <p>Duration: {activity.duration} mins</p>
+              <div className="controls">
+                <Link className='edit-activity' to={`/activities/${activityId}/edit`}>Edit</Link>
+                <ActivityDelete />
+              </div>
             </section>
           )
       }

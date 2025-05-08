@@ -4,6 +4,7 @@ import useFetch from '../../hooks/useFetch'
 
 // Service function
 import { getAllActivites } from '../../services/activities'
+import Spinner from '../Spinner/Spinner'
 
 export default function ActivityIndex(){
   // * State
@@ -16,7 +17,7 @@ export default function ActivityIndex(){
         {error 
           ? <p className='error-message'>{error}</p>
           : isLoading
-            ? <p>Loading...</p>
+            ? <Spinner />
             : activities.length > 0
               ? activities.map(activity => (
                 <Link key={activity._id} to={`/activities/${activity._id}`}>

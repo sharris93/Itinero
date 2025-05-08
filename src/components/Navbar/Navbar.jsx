@@ -10,6 +10,8 @@ export default function Navbar(){
       <nav>
         <NavLink to="/activities/new">Create activity</NavLink>
         <NavLink to="/activities">Activities</NavLink>
+        <NavLink to="/register">Register</NavLink>
+        <NavLink to="/login">Login</NavLink>
       </nav>
     </header>
   )

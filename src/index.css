@@ -27,22 +27,11 @@ a:hover {
   font-size: 0.8rem;
 }
 
-.button-spinner {
-  height: 20px;
+
+.spinner-wrapper {
+  text-align: center;
 }
 
-.confirm-delete {
-  height: 80px;
-  width: 350px;
-  text-align: center;
-  padding: 2rem;
-  background: black;
-  border-radius: 18px;
-  position: fixed;
-  top: 50%;
-  right: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.spinner {
+  height: 20px;
 }

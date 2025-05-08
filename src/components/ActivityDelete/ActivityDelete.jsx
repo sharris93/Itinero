@@ -1,3 +1,4 @@
+import './ActivityDelete.css'
 import { useState } from "react"
 import { deleteActivity } from "../../services/activities"
 import { useParams, useNavigate } from "react-router"
@@ -28,7 +29,7 @@ export default function ActivityDelete(){
   return (
     <>
       { error && <p className="error-message">{error}</p> }
-      <button onClick={handleDelete}>
+      <button className='delete-activity' onClick={handleDelete}>
         {isLoading ? <Spinner /> : 'Delete'}
       </button>
     </>
