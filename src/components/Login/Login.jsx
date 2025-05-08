@@ -1,10 +1,14 @@
 import { Link, useNavigate } from "react-router"
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { login } from "../../services/auth"
 import Spinner from "../Spinner/Spinner"
-import { setToken } from "../../utils/auth"
+import { setToken, getUserFromToken } from "../../utils/auth"
+import { UserContext } from '../../contexts/UserContext'
 
 export default function Login(){
+  // * Context
+  const { setUser } = useContext(UserContext)
+
   // * State
   const [formData, setFormData] = useState({
     email: '',
@@ -26,8 +30,13 @@ export default function Login(){
     evt.preventDefault()
     setIsLoading(true)
     try {
+      // Make API call
       const { data } = await login(formData)
+      // Set the token from the response to storage
       setToken(data.token)
+      // Set the user object inside the token to the user context state
+      setUser(getUserFromToken())
+      // Finally, navigate to the next page
       navigate('/activities')
     } catch (error) {
       setError(error.response.data)
