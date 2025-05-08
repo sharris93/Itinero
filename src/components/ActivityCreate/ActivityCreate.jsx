@@ -71,6 +71,8 @@ export default function ActivityCreate(){
           {error.duration && <p className='error-message'>{error.duration}</p>}
         </div>
 
+        {error.message && <p className='error-message'>{error.message}</p>}
+
         {/* Submit */}
         <button type="submit">{ isLoading ? <Spinner /> : 'Create Activity' }</button>
       </form>
