@@ -1,10 +1,13 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router'
+import { useState, useContext } from 'react'
+import { Navigate, useNavigate } from 'react-router'
 import './ActivityCreate.css'
 import { createActivity } from '../../services/activities'
 import Spinner from '../Spinner/Spinner'
+import { UserContext } from '../../contexts/UserContext'
 
 export default function ActivityCreate(){
+  // * Context
+  const { user } = useContext(UserContext)
   // * State
   const [formData, setFormData] = useState({
     title: '',
@@ -35,6 +38,10 @@ export default function ActivityCreate(){
     const copiedObject = { ...formData }
     copiedObject[evt.target.name] = evt.target.value
     setFormData(copiedObject)
+  }
+
+  if (!user) {
+    return <Navigate to="/login" />
   }
 
 

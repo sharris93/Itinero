@@ -1,9 +1,13 @@
-import { useState, useEffect } from "react"
-import { useParams, useNavigate } from "react-router"
+import { useState, useEffect, useContext } from "react"
+import { useParams, useNavigate, Navigate } from "react-router"
 import { getSingleActivity, updateActivity } from "../../services/activities"
 import Spinner from "../Spinner/Spinner"
+import { UserContext } from "../../contexts/UserContext"
 
 export default function ActivityUpdate(){
+  // * Context
+  const { user } = useContext(UserContext)
+
   // * State
   const [formData, setFormData] = useState({
     title: '',
@@ -50,6 +54,12 @@ export default function ActivityUpdate(){
     }
     getActivityData()
   }, [activityId])
+
+
+  // * Before rendering the form page, check if user is logged in, navigating them away if not
+  if (!user) {
+    return <Navigate to="/login" />
+  }
 
   return (
     <section id="form-page">

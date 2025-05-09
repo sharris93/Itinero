@@ -14,7 +14,6 @@ export default function ActivityShow(){
   const { activityId } = useParams()
 
   const { user } = useContext(UserContext)
-  console.log(user)
 
   // * State
   const { data: activity, isLoading, error } = useFetch(
@@ -35,7 +34,7 @@ export default function ActivityShow(){
               <p>📍 {activity.location}</p>
               <p>{activity.description}</p>
               <p>Duration: {activity.duration} mins</p>
-              { user &&
+              { user && user._id === activity.owner &&
                 <div className="controls">
                   <Link className='edit-activity' to={`/activities/${activityId}/edit`}>Edit</Link>
                   <ActivityDelete />

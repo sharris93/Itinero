@@ -1,9 +1,13 @@
-import { Link, useNavigate } from "react-router";
-import { useState } from "react";
+import { Link, useNavigate, Navigate } from "react-router";
+import { useState, useContext } from "react";
 import Spinner from "../Spinner/Spinner";
 import { register } from "../../services/auth";
+import { UserContext } from "../../contexts/UserContext";
 
 export default function Register(){
+  // * Context
+  const { user } = useContext(UserContext)
+  
   // * State
   const [formData, setFormData] = useState({
     email: '',
@@ -37,6 +41,10 @@ export default function Register(){
     } finally {
       setIsLoading(false)
     }
+  }
+
+  if (user) {
+    return <Navigate to="/" />
   }
 
   return (

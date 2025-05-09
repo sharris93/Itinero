@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router"
+import { Link, useNavigate, Navigate } from "react-router"
 import { useState, useContext } from 'react'
 import { login } from "../../services/auth"
 import Spinner from "../Spinner/Spinner"
@@ -7,7 +7,7 @@ import { UserContext } from '../../contexts/UserContext'
 
 export default function Login(){
   // * Context
-  const { setUser } = useContext(UserContext)
+  const { user, setUser } = useContext(UserContext)
 
   // * State
   const [formData, setFormData] = useState({
@@ -25,6 +25,7 @@ export default function Login(){
     setFormData({ ...formData, [name]: value })
     setError({ ...error, [name]: '' })
   }
+  
 
   const handleSubmit = async (evt) => {
     evt.preventDefault()
@@ -43,6 +44,10 @@ export default function Login(){
     } finally {
       setIsLoading(false)
     }
+  }
+
+  if (user) {
+    return <Navigate to="/" />
   }
 
   return (
