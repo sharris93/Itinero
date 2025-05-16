@@ -8,6 +8,7 @@ export default function Dashboard(){
     <main>
       <h1>Itinero</h1>
       <p>Welcome back, {user.username}</p>
+      <img src={user.profileImage} alt="" />
     </main>
   )
 }

@@ -13,7 +13,8 @@ export default function Register(){
     email: '',
     username: '',
     password: '',
-    passwordConfirmation: ''
+    passwordConfirmation: '',
+    profileImage: null
   })
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState({})
@@ -22,7 +23,12 @@ export default function Register(){
   const navigate = useNavigate()
 
   // * Functions
-  const handleChange = ({ target: { name, value } }) => {
+  const handleChange = ({ target: { name, value, type, files } }) => {
+
+    if (type === 'file'){
+      value = files[0]
+    }
+
     setFormData({
       ...formData, 
       [name]: value
@@ -78,6 +84,12 @@ export default function Register(){
           <label htmlFor="passwordConfirmation">Password Confirmation</label>
           <input type="password" name="passwordConfirmation" id="passwordConfirmation" placeholder="Password Confirmation" required onChange={handleChange} value={formData.passwordConfirmation} />
           { error.passwordConfirmation && <p className="error-message">{error.passwordConfirmation}</p>}
+        </div>
+
+        {/* Profile Image */}
+        <div className="input-control">
+          <label htmlFor="profileImage">Profile Image</label>
+          <input type="file" name="profileImage" id="profileImage" required onChange={handleChange} />
         </div>
 
         <button type="submit">
